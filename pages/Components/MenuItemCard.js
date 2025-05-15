@@ -1,17 +1,37 @@
-import logo from "../assets/image.png";
+// Updated version of pages/Components/MenuItemCard.js
+
+import React from 'react';
 
 export default function MenuItemCard({ item, currencySymbol, convertPrice, t, darkMode }) {
+  // Map category to icons if the item doesn't have an icon
+  const getCategoryIcon = (category) => {
+    const categoryIcons = {
+      burgers: "fa-hamburger",
+      sandwiches: "fa-bread-slice",
+      pizzas: "fa-pizza-slice",
+      salads: "fa-leaf",
+      desserts: "fa-ice-cream",
+      drinks: "fa-glass-martini",
+      sides: "fa-french-fries",
+      mains: "fa-utensils"
+    };
+    
+    return categoryIcons[category] || "fa-utensils";
+  };
+
   return (
     <div className="menu-item-card">
-      <div className={`card h-100 border-0 shadow-sm hover-effect ${darkMode ? 'bg-dark text-light' : ''}`}>
-        <div className="card-img-container">
-    <img 
-  src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
-  className="card-img-top" 
-  alt={item.name}
-  loading="lazy"
-/>
-
+      <div className={`card h-100 border-0 shadow-hover ${darkMode ? 'bg-dark text-light' : ''}`}>
+        <div className="card-img-container" data-category={item.category}>
+          {/* Replace image with icon */}
+          <div className="item-icon">
+                  <img 
+    src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
+    className="card-img-top" 
+    alt={item.name}
+    loading="lazy"
+    />
+          </div>
           
           {/* Special badges */}
           <div className="item-badges">
@@ -27,12 +47,17 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
             )}
           </div>
           
+          {/* Category badge */}
+          <div className="category-badge">
+            {t(`categories.${item.category}`)}
+          </div>
+          
           {/* Quick view button */}
           <div className="overlay-buttons">
-            <button className="btn btn-sm btn-light rounded-circle" aria-label="Add to favorites">
+            <button className="action-btn favorite" aria-label="Add to favorites">
               <i className="far fa-heart"></i>
             </button>
-            <button className="btn btn-sm btn-light rounded-circle" aria-label="Quick view">
+            <button className="action-btn view" aria-label="Quick view">
               <i className="fas fa-eye"></i>
             </button>
           </div>
@@ -40,16 +65,16 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
         
         <div className="card-body">
           <div className="d-flex justify-content-between align-items-start mb-2">
-            <h5 className="card-title">{item.name}</h5>
+            <h5 className="item-title">{item.name}</h5>
             <div className="price-tag">
               {currencySymbol}{convertPrice(item.price)}
             </div>
           </div>
           
-          <p className={`card-text ${darkMode ? 'text-light opacity-75' : 'text-muted'} small`}>{item.description}</p>
+          <p className="item-description">{item.description}</p>
           
           {/* Item attributes */}
-          <div className="item-attributes mb-3">
+          <div className="dietary-indicators">
             {item.vegetarian && (
               <span className="attribute vegetarian" title={t('vegetarian')}>
                 <i className="fas fa-leaf"></i>
