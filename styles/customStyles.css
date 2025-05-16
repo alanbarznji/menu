@@ -302,8 +302,9 @@ body {
   z-index: 2;
   display: flex;
   gap: 5px;
-  opacity: 0;
+  opacity: 100;
   transition: var(--transition);
+
 }
 
 [dir="rtl"] .overlay-buttons {

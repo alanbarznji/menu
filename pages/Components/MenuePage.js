@@ -208,7 +208,9 @@ useEffect(() => {
                   borderRadius: '20px',
                   padding: '8px 16px',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                    height: '40px',         // ✅ Ensures consistent height
+  
                 }}
                 onClick={(e) => {
                   e.stopPropagation();
@@ -303,7 +305,8 @@ useEffect(() => {
                   borderRadius: '20px',
                   padding: '8px 16px',
                   transition: 'all 0.3s ease',
-                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)'
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+                       height: '40px', 
                 }}
                 onClick={(e) => {
                   e.stopPropagation();

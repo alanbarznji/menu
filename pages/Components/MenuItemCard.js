@@ -25,7 +25,7 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
       <div className={`card h-100 border-0 shadow-hover ${darkMode ? 'bg-dark text-light' : ''}`}>
         <div className="card-img-container" data-category={item.category}>
           {/* Replace image with icon */}
-          <div className="item-icon">
+          <div className="item-icon ">
                   <img 
     src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
     className="card-img-top" 
@@ -58,9 +58,7 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
             <button className="action-btn favorite" aria-label="Add to favorites">
               <i className="far fa-heart"></i>
             </button>
-            <button className="action-btn view" aria-label="Quick view">
-              <i className="fas fa-eye"></i>
-            </button>
+ 
           </div>
         </div>
         
@@ -78,28 +76,7 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
             </div>
             
             {/* Item attributes */}
-            <div className="dietary-indicators-new">
-              {item.vegetarian && (
-                <span className="attribute vegetarian" title={t('vegetarian')}>
-                  <i className="fas fa-leaf"></i>
-                </span>
-              )}
-              {item.spicy && (
-                <span className="attribute spicy" title={t('spicy')}>
-                  <i className="fas fa-pepper-hot"></i>
-                </span>
-              )}
-              {item.glutenFree && (
-                <span className="attribute gluten-free" title={t('glutenFree')}>
-                  <i className="fas fa-wheat-awn-circle-exclamation"></i>
-                </span>
-              )}
-              {item.vegan && (
-                <span className="attribute vegan" title={t('vegan')}>
-                  <i className="fas fa-seedling"></i>
-                </span>
-              )}
-            </div>
+ 
           </div>
         </div>
         
