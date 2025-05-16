@@ -16,25 +16,29 @@ export default function CategorySlider({ categories, activeCategory, setActiveCa
   };
 
   return (
-    <div className="category-slider">
-      <div className="d-flex justify-content-center flex-nowrap overflow-auto pb-3 hide-scrollbar">
-        {categories.map((category, index) => (
-          <div 
-            key={index} 
-            className="px-2"
-          >
-            <button
-              className={`category-btn ${activeCategory === category ? 'active' : ''}`}
-              onClick={() => setActiveCategory(category)}
-              aria-label={`Filter by ${t(`categories.${category}`) || category}`}
+    <div className="category-slider-container">
+      <div className="category-slider-wrapper">
+        <div className="d-flex overflow-auto py-2 hide-scrollbar">
+          {categories.map((category, index) => (
+            <div 
+              key={index} 
+              className="category-item"
             >
-              <div className="category-icon">
-                <i className={`fas ${categoryIcons[category] || 'fa-utensils'}`}></i>
-              </div>
-              <span>{t(`categories.${category}`) || category}</span>
-            </button>
-          </div>
-        ))}
+              <button
+                className={`category-btn-new ${activeCategory === category ? 'active' : ''}`}
+                onClick={() => setActiveCategory(category)}
+                aria-label={`Filter by ${t(`categories.${category}`) || category}`}
+              >
+                <div className="category-btn-content">
+                  <div className="category-icon-wrapper">
+                    <i className={`fas ${categoryIcons[category] || 'fa-utensils'}`}></i>
+                  </div>
+                  <span className="category-name">{t(`categories.${category}`) || category}</span>
+                </div>
+              </button>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

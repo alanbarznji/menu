@@ -64,46 +64,52 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
           </div>
         </div>
         
-        <div className="card-body">
+        <div className="card-body d-flex flex-column">
           <div className="d-flex justify-content-between align-items-start mb-2">
             <h5 className="item-title">{item.name}</h5>
-            <div className="price-tag">
+            <div className="price-tag-new">
               {currencySymbol}{convertPrice(item.price)}
             </div>
           </div>
           
-          <p className="item-description">{item.description}</p>
-          
-          {/* Item attributes */}
-          <div className="dietary-indicators d-flex gap-1">
-            {item.vegetarian && (
-              <span className="attribute vegetarian" title={t('vegetarian')}>
-                <i className="fas fa-leaf"></i>
-              </span>
-            )}
-            {item.spicy && (
-              <span className="attribute spicy" title={t('spicy')}>
-                <i className="fas fa-pepper-hot"></i>
-              </span>
-            )}
-            {item.glutenFree && (
-              <span className="attribute gluten-free" title={t('glutenFree')}>
-                <i className="fas fa-wheat-awn-circle-exclamation"></i>
-              </span>
-            )}
-            {item.vegan && (
-              <span className="attribute vegan" title={t('vegan')}>
-                <i className="fas fa-seedling"></i>
-              </span>
-            )}
+          <div className="item-content">
+            <div className="item-description-wrapper">
+              <p className="item-description-new">{item.description}</p>
+            </div>
+            
+            {/* Item attributes */}
+            <div className="dietary-indicators-new">
+              {item.vegetarian && (
+                <span className="attribute vegetarian" title={t('vegetarian')}>
+                  <i className="fas fa-leaf"></i>
+                </span>
+              )}
+              {item.spicy && (
+                <span className="attribute spicy" title={t('spicy')}>
+                  <i className="fas fa-pepper-hot"></i>
+                </span>
+              )}
+              {item.glutenFree && (
+                <span className="attribute gluten-free" title={t('glutenFree')}>
+                  <i className="fas fa-wheat-awn-circle-exclamation"></i>
+                </span>
+              )}
+              {item.vegan && (
+                <span className="attribute vegan" title={t('vegan')}>
+                  <i className="fas fa-seedling"></i>
+                </span>
+              )}
+            </div>
           </div>
         </div>
         
         <div className="card-footer bg-transparent border-0 pb-3">
-<button className="btn btn-add-to-cart w-100" onClick={() => onAddToCart(item)}>
-  <i className="fas fa-plus me-2"></i> {t('addToCart')}
-</button>
-
+          <button className="btn-add-to-cart-new w-100" onClick={() => onAddToCart(item)}>
+            <span className="btn-text">{t('addToCart')}</span>
+            <span className="btn-icon">
+              <i className="fas fa-shopping-cart"></i>
+            </span>
+          </button>
         </div>
       </div>
     </div>

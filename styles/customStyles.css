@@ -1,23 +1,35 @@
 /* styles/customStyles.css */
 
 /* ===== Variables ===== */
+/* Bronze Color Scheme Variables - Add to the top of customStyles.css */
+
 :root {
-  /* Main colors - easily change these to match your branding */
-  --primary: #ff6b35;
-  --primary-light: #ff9f1c;
-  --secondary: #2ec4b6;
-  --secondary-light: #37dbc8;
+  /* Main colors - Bronze/Copper theme */
+  --primary: #b87333;
+  --primary-light: #d4a76a;
+  --primary-dark: #8c5425;
+  --secondary: #4a3c30;
+  --secondary-light: #7d6852;
+  
+  /* Accent colors */
+  --accent: #e8c39e;
+  --accent-light: #f0dbc0;
   
   /* UI colors */
-  --dark: #1a1a1a;
-  --light: #f8f9fa;
-  --gray: #6c757d;
-  --success: #4caf50;
-  --warning: #ffc107;
-  --danger: #e91e63;
-  --info: #2196f3;
+  --dark: #2d2522;
+  --light: #f9f6f3;
+  --gray: #8a7968;
+  --success: #789d7c;
+  --warning: #d4a76a;
+  --danger: #c25b55;
+  --info: #7a97ab;
   
-  /* UI elements */
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-light));
+  --gradient-secondary: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+  --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-light));
+  
+  /* UI elements - unchanged */
   --border-radius: 10px;
   --border-radius-lg: 15px;
   --border-radius-xl: 20px;
@@ -27,21 +39,21 @@
   --font-family: 'Poppins', sans-serif;
 }
 
-/* ===== Light/Dark Theme ===== */
+/* Light/Dark Theme with Bronze colors */
 .light-mode {
-  --bg-color: #f9f9f9;
+  --bg-color: #f9f6f3;
   --card-bg: #ffffff;
-  --text-color: #333333;
-  --border-color: #eaeaea;
-  --muted-color: #6c757d;
+  --text-color: #3a2e24;
+  --border-color: #e6ded4;
+  --muted-color: #8a7968;
 }
 
 .dark-mode {
-  --bg-color: #121212;
-  --card-bg: #1e1e1e;
-  --text-color: #f8f9fa;
-  --border-color: #2d2d2d;
-  --muted-color: #adb5bd;
+  --bg-color: #252018;
+  --card-bg: #2d2522;
+  --text-color: #e8d5c0;
+  --border-color: #3d3128;
+  --muted-color: #a89783;
 }
 
 body {
@@ -1827,4 +1839,290 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   box-sizing: border-box;
+}
+.category-slider-container {
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.category-slider-wrapper {
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.category-slider-wrapper::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 3px;
+  bottom: 0;
+  background: linear-gradient(to right, var(--primary) 30%, transparent);
+  opacity: 0.3;
+  border-radius: 3px;
+}
+
+.category-item {
+  padding: 0 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.category-btn-new {
+  border: none;
+  background: transparent;
+  position: relative;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  min-width: 120px;
+  outline: none;
+}
+
+.category-btn-new:hover {
+  transform: translateY(-4px);
+}
+
+.category-btn-new.active {
+  transform: translateY(-4px);
+}
+
+.category-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.category-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  background: var(--card-bg);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 2px solid transparent;
+}
+
+.category-btn-new:hover .category-icon-wrapper {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-btn-new.active .category-icon-wrapper {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.category-icon-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.category-btn-new:hover .category-icon-wrapper::before {
+  opacity: 0.1;
+}
+
+.category-name {
+  font-weight: 600;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+  color: var(--text-color);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.category-btn-new:hover .category-name {
+  opacity: 1;
+}
+
+.category-btn-new.active .category-name {
+  color: var(--primary);
+  opacity: 1;
+  font-weight: 700;
+}
+
+.category-name::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
+.category-btn-new.active .category-name::after {
+  width: 30px;
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ===== NEW ADD TO CART BUTTON STYLES ===== */
+.btn-add-to-cart-new {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border: none;
+  color: white;
+  border-radius: 12px;
+  padding: 0;
+  height: 48px;
+  font-weight: 500;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
+}
+
+.btn-add-to-cart-new .btn-text {
+  display: block;
+  transition: all 0.3s ease;
+  transform: translateY(0);
+  opacity: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.btn-add-to-cart-new .btn-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(50px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  font-size: 1.2rem;
+}
+
+.btn-add-to-cart-new:hover {
+  box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-add-to-cart-new:hover .btn-text {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.btn-add-to-cart-new:hover .btn-icon {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.btn-add-to-cart-new:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(255, 107, 53, 0.3);
+}
+
+/* ===== NEW CARD DESCRIPTION STYLES ===== */
+.item-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  letter-spacing: 0.2px;
+}
+
+.price-tag-new {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  color: white;
+  padding: 6px 12px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(255, 107, 53, 0.25);
+  transform: translateY(0);
+  transition: all 0.3s ease;
+}
+
+.menu-item-card:hover .price-tag-new {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(255, 107, 53, 0.35);
+}
+
+.item-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.item-description-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.item-description-new {
+  font-size: 0.85rem;
+  color: var(--text-color);
+  opacity: 0.75;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.menu-item-card:hover .item-description-new {
+  opacity: 0.9;
+}
+
+.dietary-indicators-new {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.dietary-indicators-new .attribute {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.menu-item-card:hover .dietary-indicators-new .attribute {
+  transform: translateY(-3px);
+}
+
+/* RTL Support for new styles */
+[dir="rtl"] .category-slider-wrapper::before {
+  background: linear-gradient(to left, var(--primary) 30%, transparent);
 }

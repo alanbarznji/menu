@@ -91,9 +91,13 @@ export default function CartDrawer({
                   <ul className="cart-items">
                     {cartItems.map((item) => (
                       <li key={item.id} className="cart-item">
-                        <div className="cart-item-icon" data-category={item.category}>
-                          <i className={`fas ${item.icon || getIconForCategory(item.category)}`}></i>
-                        </div>
+                        <img 
+    src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
+    className="card-img-top p-2 rounded-4" 
+    alt={item.name}
+    loading="lazy"
+ style={{height:"100px",width:"100px"}}
+    />
                         <div className="cart-item-details">
                           <div className="cart-item-info">
                             <h3 className="cart-item-name">{item.name}</h3>
@@ -154,7 +158,7 @@ export default function CartDrawer({
                   </div>
                   <h3 className="cart-empty-title">{t('cartEmpty')}</h3>
                   <p className="cart-empty-text">{t('startShopping')}</p>
-                  <button className="cart-empty-button" onClick={onClose}>
+                  <button className="cart-empty-button rounded-3" onClick={onClose}>
                     {t('backToMenu')}
                   </button>
                 </div>
@@ -163,11 +167,11 @@ export default function CartDrawer({
 
             {cartItems.length > 0 && (
               <div className="cart-drawer-footer">
-                <button className="cart-continue" onClick={onClose}>
+                <button className="cart-continue rounded-3" onClick={onClose}>
                   <i className="fas fa-arrow-left me-2"></i>
                   {t('continueShopping')}
                 </button>
-                <button className="cart-checkout">
+                <button className="cart-checkout rounded-3">
                   {t('checkout')}
                   <i className="fas fa-arrow-right ms-2"></i>
                 </button>

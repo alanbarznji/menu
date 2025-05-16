@@ -35,8 +35,14 @@ export default function CartNotification({
           exit={{ x: 300, opacity: 0 }}
           transition={{ type: 'spring', damping: 25 }}
         >
-          <div className="notification-icon" data-category={item.category}>
-            <i className={`fas ${item.icon || getIconForCategory(item.category)}`}></i>
+   <div className="item-icon">
+                  <img 
+    src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
+    className="card-img-top" 
+    alt={item.name}
+    loading="lazy"
+ style={{height:"125px"}}
+    />
           </div>
           <div className="notification-content">
             <div className="notification-header">

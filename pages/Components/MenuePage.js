@@ -170,27 +170,25 @@ useEffect(() => {
        <nav className={`navbar navbar-expand ${darkMode ? 'navbar-dark' : 'navbar-light'} sticky-top shadow-sm`}
         style={{
           background: darkMode 
-            ? 'linear-gradient(135deg, #1f1f1f 0%, #2d2d2d 100%)' 
-            : 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+           ? 'linear-gradient(135deg, #252018 0%, #3d3128 100%)' 
+  : 'linear-gradient(135deg, #f9f6f3 0%, #e8d5c0 100%)',
           padding: '12px 0'
         }}>
         <div className="container py-1">
           <a className="navbar-brand d-flex align-items-center" href="#">
             <i className="fas fa-utensils me-2" 
               style={{ 
-                color: darkMode ? '#ff7e5f' : '#ff6b6b',
+                color:'linear-gradient(45deg, #b87333, #8c5425)',
                 fontSize: '1.5rem'
               }}></i>
             <span className="fw-bold" 
               style={{ 
-                background:   
-                
-                 'linear-gradient(45deg, #ff6b6b, #5f2c82)',
+                background: 'linear-gradient(45deg, #b87333, #8c5425)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 fontSize: '1.6rem',
                 letterSpacing: '0.5px'
-              }}>Savory</span>
+              }}>Zirak</span>
           </a>
           
           <div className="ms-auto d-flex align-items-center gap-2">
@@ -280,7 +278,7 @@ useEffect(() => {
                       </div>
                       {language === lang.code && (
                         <i className="fas fa-check ms-auto" style={{ 
-                          color: darkMode ? '#ff7e5f' : '#ff6b6b',
+                  color: darkMode ? '#d4a76a' : '#b87333',
                           fontSize: '0.8rem'
                         }}></i>
                       )}
@@ -437,10 +435,7 @@ useEffect(() => {
 
       <main className="main-content">
         <div className="container py-5">
-          <div className="text-center mb-5">
-            <h1 className="display-4 fw-bold main-title">{t('ourMenu')}</h1>
-            <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>{t('menuDescription')}</p>
-          </div>
+ 
 
           <div className="search-container mb-4">
             <div className="search-wrapper" role="search">
@@ -536,7 +531,7 @@ useEffect(() => {
         <div className="brand-icon">
           <i className="fas fa-utensils"></i>
         </div>
-        <h4 className="modal-title">{t('welcome') || 'Welcome to Savory!'}</h4>
+        <h4 className="modal-title">{t('welcome') || 'Welcome to Zirak!'}</h4>
    
       </div>
 
@@ -589,7 +584,7 @@ useEffect(() => {
       </div>
 
       <button
-        className="confirm-btn"
+        className="confirm-btn rounded-4"
         onClick={() => {
           localStorage.setItem('language', language);
           localStorage.setItem('currency', currency);
@@ -597,7 +592,7 @@ useEffect(() => {
         }}
       >
         <span>{t('continue') || 'Continue'}</span>
-        <i className="fas fa-arrow-right ms-2"></i>
+ 
       </button>
     </div>
   </div>
