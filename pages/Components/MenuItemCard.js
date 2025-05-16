@@ -75,7 +75,7 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
           <p className="item-description">{item.description}</p>
           
           {/* Item attributes */}
-          <div className="dietary-indicators">
+          <div className="dietary-indicators d-flex gap-1">
             {item.vegetarian && (
               <span className="attribute vegetarian" title={t('vegetarian')}>
                 <i className="fas fa-leaf"></i>

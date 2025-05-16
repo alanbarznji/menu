@@ -1,3 +1,5 @@
+// Enhanced CategorySlider Component with improved styling
+import React from 'react';
 
 export default function CategorySlider({ categories, activeCategory, setActiveCategory, t, darkMode }) {
   // Category icons mapping
@@ -14,7 +16,7 @@ export default function CategorySlider({ categories, activeCategory, setActiveCa
   };
 
   return (
-    <div className="category-slider mb-5">
+    <div className="category-slider">
       <div className="d-flex justify-content-center flex-nowrap overflow-auto pb-3 hide-scrollbar">
         {categories.map((category, index) => (
           <div 
@@ -22,13 +24,14 @@ export default function CategorySlider({ categories, activeCategory, setActiveCa
             className="px-2"
           >
             <button
-              className={`category-btn ${activeCategory === category ? 'active' : ''} ${darkMode ? 'text-light' : ''}`}
+              className={`category-btn ${activeCategory === category ? 'active' : ''}`}
               onClick={() => setActiveCategory(category)}
+              aria-label={`Filter by ${t(`categories.${category}`) || category}`}
             >
               <div className="category-icon">
                 <i className={`fas ${categoryIcons[category] || 'fa-utensils'}`}></i>
               </div>
-              <span>{t(`categories.${category}`)}</span>
+              <span>{t(`categories.${category}`) || category}</span>
             </button>
           </div>
         ))}

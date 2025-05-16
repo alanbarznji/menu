@@ -205,7 +205,8 @@ useEffect(() => {
                   border: darkMode 
                     ? '1px solid rgba(255, 255, 255, 0.2)' 
                     : '1px solid rgba(0, 0, 0, 0.1)',
-                  color: darkMode ? '#ffffff' : '#333333',
+                  color: 'var(--text-color)',
+
                   borderRadius: '20px',
                   padding: '8px 16px',
                   transition: 'all 0.3s ease',
@@ -227,13 +228,14 @@ useEffect(() => {
               {showLanguageDropdown && (
                 <div className="language-dropdown position-absolute mt-2 shadow-lg rounded-3 z-1 custom-dropdown" 
                   style={{ 
-                    minWidth: '220px', 
-                    right: 0,
+  minWidth: '220px',
+  [language === 'ar' ? 'left' : 'right']: 0,
                     backgroundColor: darkMode ? '#2a2a2a' : 'white',
                     border: darkMode ? '1px solid #444' : '1px solid #ddd',
                     padding: '0.5rem',
                     animation: 'fadeSlideIn 0.3s ease',
-                    transformOrigin: 'top right'
+                    transformOrigin: language === 'ar' ? 'top left' : 'top right'
+
                   }}>
                   <div className="dropdown-header pb-2 mb-2" style={{ borderBottom: darkMode ? '1px solid #444' : '1px solid #eee' }}>
                     <span style={{ fontWeight: '600', fontSize: '0.9rem', color: darkMode ? '#ccc' : '#666' }}>
@@ -328,12 +330,13 @@ useEffect(() => {
                 <div className="currency-dropdown position-absolute mt-2 shadow-lg rounded-3 z-1 custom-dropdown" 
                   style={{ 
                     minWidth: '220px', 
-                    right: 0,
+         [language === 'ar' ? 'left' : 'right']: 0,
                     backgroundColor: darkMode ? '#2a2a2a' : 'white',
                     border: darkMode ? '1px solid #444' : '1px solid #ddd',
                     padding: '0.5rem',
                     animation: 'fadeSlideIn 0.3s ease',
-                    transformOrigin: 'top right'
+                    transformOrigin: language === 'ar' ? 'top left' : 'top right'
+
                   }}>
                   <div className="dropdown-header pb-2 mb-2" style={{ borderBottom: darkMode ? '1px solid #444' : '1px solid #eee' }}>
                     <span style={{ fontWeight: '600', fontSize: '0.9rem', color: darkMode ? '#ccc' : '#666' }}>
@@ -528,15 +531,13 @@ useEffect(() => {
       />
 {!showLanguageModal && (
   <div className="setup-modal-overlay">
-    <div className={`setup-modal-content ${darkMode ? 'dark' : 'light'}`}>
+    <div className={`setup-modal-content ${darkMode ? 'dark' : 'light'} d-flex`}>
       <div className="modal-header">
         <div className="brand-icon">
           <i className="fas fa-utensils"></i>
         </div>
         <h4 className="modal-title">{t('welcome') || 'Welcome to Savory!'}</h4>
-        <p className="modal-subtitle">
-          {t('pleaseSelectPreferences') || 'Please select your language and currency to continue.'}
-        </p>
+   
       </div>
 
       <div className="modal-content-area">

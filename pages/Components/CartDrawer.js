@@ -67,14 +67,14 @@ export default function CartDrawer({
       {/* Cart Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
-            className={`cart-drawer ${darkMode ? 'dark' : ''}`}
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 300 } }
-            style={{backgroundColor:"#ffffff"}}
-          >
+<motion.div 
+  className={`cart-drawer ${darkMode ? 'dark' : ''}`}
+  initial={{ x: '100%' }}
+  animate={{ x: 0 }}
+  exit={{ x: '100%' }}
+  transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+>
+
             <div className="cart-drawer-header">
               <h2 className="cart-drawer-title">
                 <i className="fas fa-shopping-cart me-2"></i>
