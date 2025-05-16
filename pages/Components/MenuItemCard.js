@@ -2,7 +2,8 @@
 
 import React from 'react';
 
-export default function MenuItemCard({ item, currencySymbol, convertPrice, t, darkMode }) {
+export default function MenuItemCard({ item, currencySymbol, convertPrice, t, darkMode, onAddToCart }) {
+
   // Map category to icons if the item doesn't have an icon
   const getCategoryIcon = (category) => {
     const categoryIcons = {
@@ -99,9 +100,10 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
         </div>
         
         <div className="card-footer bg-transparent border-0 pb-3">
-          <button className="btn btn-add-to-cart w-100">
-            <i className="fas fa-plus me-2"></i> {t('addToCart')}
-          </button>
+<button className="btn btn-add-to-cart w-100" onClick={() => onAddToCart(item)}>
+  <i className="fas fa-plus me-2"></i> {t('addToCart')}
+</button>
+
         </div>
       </div>
     </div>
