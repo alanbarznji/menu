@@ -1,11 +1,13 @@
+'use client';
+
 import { useEffect } from "react";
 
 export default function LanguageCurrencyBar({ 
-  language, 
-  setLanguage,             
-  currency, 
-  setCurrency, 
-  darkMode 
+  language = 'en', 
+  setLanguage = () => {},             
+  currency = 'USD', 
+  setCurrency = () => {}, 
+  darkMode = false 
 }) {
   // Available languages
   const languages = [
@@ -24,6 +26,10 @@ export default function LanguageCurrencyBar({
     { code: 'JPY', symbol: '¥', name: 'Japanese Yen' },
     { code: 'AED', symbol: 'د.إ', name: 'UAE Dirham' }
   ];
+  
+  // Find the current language and currency with safe fallbacks
+  const currentLanguage = languages.find(lang => lang.code === language) || languages[0];
+  const currentCurrency = currencies.find(curr => curr.code === currency) || currencies[0];
   
   // Set document direction for RTL languages
   useEffect(() => {
@@ -46,7 +52,7 @@ export default function LanguageCurrencyBar({
               data-bs-toggle="dropdown" 
               aria-expanded="false"
             >
-              {languages.find(lang => lang.code === language).flag} {languages.find(lang => lang.code === language).name}
+              {currentLanguage.flag} {currentLanguage.name}
             </button>
             <ul className={`dropdown-menu dropdown-menu-end ${darkMode ? 'dropdown-menu-dark' : ''}`} aria-labelledby="languageDropdown">
               {languages.map((lang) => (
@@ -70,7 +76,7 @@ export default function LanguageCurrencyBar({
               data-bs-toggle="dropdown" 
               aria-expanded="false"
             >
-              {currencies.find(curr => curr.code === currency).symbol} {currency}
+              {currentCurrency.symbol} {currentCurrency.code}
             </button>
             <ul className={`dropdown-menu dropdown-menu-end ${darkMode ? 'dropdown-menu-dark' : ''}`} aria-labelledby="currencyDropdown">
               {currencies.map((curr) => (

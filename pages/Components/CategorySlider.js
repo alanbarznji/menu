@@ -19,7 +19,7 @@ export default function CategorySlider({ categories, activeCategory, setActiveCa
     <div className="category-slider-container">
       <div className="category-slider-wrapper">
         <div className="d-flex overflow-auto py-2 hide-scrollbar">
-          {categories.map((category, index) => (
+          {categories?.map((category, index) => (
             <div 
               key={index} 
               className="category-item"

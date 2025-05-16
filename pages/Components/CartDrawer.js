@@ -14,7 +14,7 @@ export default function CartDrawer({
   onRemoveItem,
   darkMode 
 }) {
-  const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const total = cartItems?.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   // Close the drawer when pressing ESC
   useEffect(() => {

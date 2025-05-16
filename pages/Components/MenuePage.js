@@ -129,7 +129,7 @@ const [showLanguageModal, setShowLanguageModal] = useState(false);
   }, [currency]);
 
   const getCurrentLanguage = () => {
-    return languages.find(lang => lang.code === language);
+    return languages.find(lang => lang.code === language) ||"language";
   };
 
   const getCurrentCurrency = () => {
