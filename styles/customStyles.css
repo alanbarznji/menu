@@ -2127,3 +2127,10 @@ body {
 [dir="rtl"] .category-slider-wrapper::before {
   background: linear-gradient(to left, var(--primary) 30%, transparent);
 }
+.action-btn.favorite .fa-heart {
+  transition: color 0.3s ease;
+}
+
+.action-btn.favorite .text-danger {
+  color: #e74c3c !important;
+}

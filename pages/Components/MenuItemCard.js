@@ -1,10 +1,8 @@
-// Updated version of pages/Components/MenuItemCard.js
-
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function MenuItemCard({ item, currencySymbol, convertPrice, t, darkMode, onAddToCart }) {
+  const [isFavorite, setIsFavorite] = useState(false);
 
-  // Map category to icons if the item doesn't have an icon
   const getCategoryIcon = (category) => {
     const categoryIcons = {
       burgers: "fa-hamburger",
@@ -16,25 +14,27 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
       sides: "fa-french-fries",
       mains: "fa-utensils"
     };
-    
     return categoryIcons[category] || "fa-utensils";
+  };
+
+  const toggleFavorite = () => {
+    setIsFavorite(!isFavorite);
+    // Optional: trigger global save, API call, or localStorage
   };
 
   return (
     <div className="menu-item-card">
       <div className={`card h-100 border-0 shadow-hover ${darkMode ? 'bg-dark text-light' : ''}`}>
         <div className="card-img-container" data-category={item.category}>
-          {/* Replace image with icon */}
-          <div className="item-icon ">
-                  <img 
-    src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
-    className="card-img-top" 
-    alt={item.name}
-    loading="lazy"
-    />
+          <div className="item-icon">
+            <img 
+              src="https://images.ctfassets.net/j8tkpy1gjhi5/5OvVmigx6VIUsyoKz1EHUs/b8173b7dcfbd6da341ce11bcebfa86ea/Salami-pizza-hero.jpg?w=1440&fm=webp&q=80" 
+              className="card-img-top" 
+              alt={item.name}
+              loading="lazy"
+            />
           </div>
-          
-          {/* Special badges */}
+
           <div className="item-badges">
             {item.bestseller && (
               <span className="badge badge-bestseller">
@@ -47,21 +47,23 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
               </span>
             )}
           </div>
-          
-          {/* Category badge */}
+
           <div className="category-badge">
             {t(`categories.${item.category}`)}
           </div>
-          
-          {/* Quick view button */}
+
+          {/* Toggle Favorite */}
           <div className="overlay-buttons">
-            <button className="action-btn favorite" aria-label="Add to favorites">
-              <i className="far fa-heart"></i>
+            <button 
+              className="action-btn favorite" 
+              aria-label="Add to favorites"
+              onClick={toggleFavorite}
+            >
+              <i className={`fa-heart ${isFavorite ? 'fas text-danger' : 'far'}`}></i>
             </button>
- 
           </div>
         </div>
-        
+
         <div className="card-body d-flex flex-column">
           <div className="d-flex justify-content-between align-items-start mb-2">
             <h5 className="item-title">{item.name}</h5>
@@ -69,17 +71,14 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
               {currencySymbol}{convertPrice(item.price)}
             </div>
           </div>
-          
+
           <div className="item-content">
             <div className="item-description-wrapper">
               <p className="item-description-new">{item.description}</p>
             </div>
-            
-            {/* Item attributes */}
- 
           </div>
         </div>
-        
+
         <div className="card-footer bg-transparent border-0 pb-3">
           <button className="btn-add-to-cart-new w-100" onClick={() => onAddToCart(item)}>
             <span className="btn-text">{t('addToCart')}</span>
