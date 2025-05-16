@@ -1,4 +1,4 @@
-import LoginPage from "./Components/MenuePage";
+import LoginPage from "./components/MenuePage";
 
  
 

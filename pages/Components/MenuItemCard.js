@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 
 export default function MenuItemCard({ item, currencySymbol, convertPrice, t, darkMode, onAddToCart }) {
+  // ✅ Prevent crash if item is undefined (Next.js build protection)
+  if (!item || typeof item !== 'object') return null;
+
   const [isFavorite, setIsFavorite] = useState(false);
 
   const getCategoryIcon = (category) => {
@@ -19,7 +22,7 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
 
   const toggleFavorite = () => {
     setIsFavorite(!isFavorite);
-    // Optional: trigger global save, API call, or localStorage
+    // Optional: save to global state or localStorage
   };
 
   return (
@@ -52,7 +55,6 @@ export default function MenuItemCard({ item, currencySymbol, convertPrice, t, da
             {t(`categories.${item.category}`)}
           </div>
 
-          {/* Toggle Favorite */}
           <div className="overlay-buttons">
             <button 
               className="action-btn favorite" 
